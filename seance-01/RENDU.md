@@ -21,7 +21,8 @@ Enfin, nous avons développé un script Python utilisant l'API S3 pour déposer 
 
 ## Capture d'écran
 
-[def]: captures/bucket-anfa-raw.png
+
+![Bucket Anfa Raw](captures/bucket-anfa-raw.png)
 
 ## Difficultés rencontrées
 
