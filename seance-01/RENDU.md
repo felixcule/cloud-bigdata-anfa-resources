@@ -21,7 +21,7 @@ Enfin, nous avons développé un script Python utilisant l'API S3 pour déposer 
 
 ## Capture d'écran
 
-[def]: bucket-anfa-raw.png
+[def]: captures/bucket-anfa-raw.png
 
 ## Difficultés rencontrées
 
@@ -60,7 +60,6 @@ Exercice 2 : Classification de services
 | AWS Lambda             | FaaS | Exécute du code à la demande en réponse à des événements.           |
 | Snowflake              | SaaS | Service complet d'entrepôt de données accessible en ligne.          |
 | Heroku                 | PaaS | Fournit une plateforme de déploiement d'applications sans gérer les |
-                         |      |serveurs.                                                            |
 | Microsoft 365          | SaaS | Applications bureautiques accessibles via Internet.                 |
 | Databricks             | PaaS | Plateforme managée pour l'analyse de données et Spark.              |
 | Microsoft Azure Functions | FaaS | Exécution de fonctions déclenchées par événements.               |
