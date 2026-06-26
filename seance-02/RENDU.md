@@ -31,31 +31,31 @@ Gain en pourcentage        :    61.88034% soit 62%
 
 ## Réponses aux exercices d'application
 
-EXERCICE 1 : QCM Conceptuel
-1.1 C
+EXERCICE 1 : QCM Conceptuel  
+1.1 C  
 Un conteneur partage le noyau de la machine hôte.
-Le cours précise qu'un conteneur n'est pas une VM. Il s'agit de processus Linux isolés par namespaces qui partagent le noyau Linux unique de la machine hôte. La VM (option A) embarque son propre OS, pas le conteneur. La conteneurisation démarre en millisecondes, pas la VM (option B fausse). Les deux technologies ne s'opposent pas mais se complètent.
-1.2 B
+Le cours précise qu'un conteneur n'est pas une VM. Il s'agit de processus Linux isolés par namespaces qui partagent le noyau Linux unique de la machine hôte. La VM (option A) embarque son propre OS, pas le conteneur. La conteneurisation démarre en millisecondes, pas la VM (option B fausse). Les deux technologies ne s'opposent pas mais se complètent.  
+1.2 B   
 L'image est un modèle figé en lecture seule ; le conteneur est une instance en cours d'exécution.
-Le cours définit l'image comme « un modèle figé, contenant un système de fichiers et des métadonnées », analogue à une classe en POO. Le conteneur est « une instance en cours d'exécution d'une image, avec une couche d'écriture par-dessus », analogue à un objet instancié.
-1.3 B
+Le cours définit l'image comme « un modèle figé, contenant un système de fichiers et des métadonnées », analogue à une classe en POO. Le conteneur est « une instance en cours d'exécution d'une image, avec une couche d'écriture par-dessus », analogue à un objet instancié.  
+1.3 B   
 Les namespaces
-Les namespaces sont « la technique qui donne à un processus l'illusion d'être seul au monde ». Linux propose 7 types : PID, NET, MNT, UTS, IPC, USER, CGROUP. Ce sont eux qui cloisonnent la vue des ressources pour un groupe de processus.
-1.4 A
+Les namespaces sont « la technique qui donne à un processus l'illusion d'être seul au monde ». Linux propose 7 types : PID, NET, MNT, UTS, IPC, USER, CGROUP. Ce sont eux qui cloisonnent la vue des ressources pour un groupe de processus.  
+1.4 A    
 Les cgroups
-Les cgroups (control groups) « sont la technique qui limite ce qu'un processus peut consommer ». Sans cgroups, un conteneur mal codé pourrait consommer toute la RAM ou tout le CPU de l'hôte. Ils limitent le CPU, la mémoire, l'I/O disque et le nombre de processus.
-1.5 B
+Les cgroups (control groups) « sont la technique qui limite ce qu'un processus peut consommer ». Sans cgroups, un conteneur mal codé pourrait consommer toute la RAM ou tout le CPU de l'hôte. Ils limitent le CPU, la mémoire, l'I/O disque et le nombre de processus.  
+1.5 B    
 Dans une machine virtuelle Linux invisible gérée par Docker Desktop.
-« macOS n'est pas Linux. Il n'a pas les namespaces, ni les cgroups ». Docker Desktop lance une VM Linux légère en arrière-plan via l'Apple Virtualization Framework. WSL2 (option C) est spécifique à Windows, pas macOS.
-1.6 B
+« macOS n'est pas Linux. Il n'a pas les namespaces, ni les cgroups ». Docker Desktop lance une VM Linux légère en arrière-plan via l'Apple Virtualization Framework. WSL2 (option C) est spécifique à Windows, pas macOS.  
+1.6 B  
 La société d'origine qui a créé et open-sourcé Docker en 2013.
-« Mars 2013. Une startup en difficulté du nom de DotCloud […] décide d'open-sourcer son outil interne de conteneurisation. Cet outil s'appelle Docker ». DotCloud se rebaptisera Docker, Inc.
-1.7 C
+« Mars 2013. Une startup en difficulté du nom de DotCloud […] décide d'open-sourcer son outil interne de conteneurisation. Cet outil s'appelle Docker ». DotCloud se rebaptisera Docker, Inc.  
+1.7 C  
 Docker a apporté un format d'image portable, une CLI simple et un registre public, en s'appuyant sur les mêmes primitives que LXC.
-« Ce que Docker apporte techniquement : presque rien de nouveau. Docker utilise les mêmes primitives du noyau Linux que LXC ». Les 4 contributions décisives sont : CLI ultra-simple, format d'image portable, Docker Hub, API par-dessus la complexité du noyau. Docker a transformé la conteneurisation « d'un sujet de sysadmin en un sujet de développeur ».
-1.8 B
+« Ce que Docker apporte techniquement : presque rien de nouveau. Docker utilise les mêmes primitives du noyau Linux que LXC ». Les 4 contributions décisives sont : CLI ultra-simple, format d'image portable, Docker Hub, API par-dessus la complexité du noyau. Docker a transformé la conteneurisation « d'un sujet de sysadmin en un sujet de développeur ».  
+1.8 B  
 Open Container Initiative — une norme ouverte pour les images et le runtime.
-« 2015 : Open Container Initiative (OCI). Une norme ouverte pour les images et le runtime de conteneurs, fondée par Docker, CoreOS, Google, IBM, Microsoft, RedHat ». Une image conforme OCI peut tourner sur n'importe quel runtime conforme OCI.
+« 2015 : Open Container Initiative (OCI). Une norme ouverte pour les images et le runtime de conteneurs, fondée par Docker, CoreOS, Google, IBM, Microsoft, RedHat ». Une image conforme OCI peut tourner sur n'importe quel runtime conforme OCI.    
 
 
 EXERCICE 2 : Lecture et analyse d'un Dockerfile
