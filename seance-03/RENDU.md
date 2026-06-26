@@ -55,11 +55,14 @@ Le Namespace permet de cloisonner avec les cas d'usage d'un un namespace par éq
 1.9 B  
 Le nœud Kubernetes est un conteneur Docker. Kind a lancé un conteneur Docker basé sur l'image kindest/node.
 
-EXERCICE 2 : Lecture et interprétation d'un manifeste  
+**EXERCICE 2 : Lecture et interprétation d'un manifeste**    
+
 2.1 - Rôle de selector.matchLabels et lien avec template.metadata.labels  
 Le selector.matchLabels définit quelles pods ce Deployment doit gérer. Il sélectionne les pods ayant le label app: anfa-api. Le template.metadata.labels assigne ce même label aux pods créés par le Deployment. Le lien : le Deployment utilise le selector pour identifier « ses » pods — ceux qu'il doit surveiller, remplacer en cas de panne, ou scaler. Si les labels ne correspondent pas, le Deployment ne reconnaît pas les pods qu'il a créés.  
+
 2.2 - Nombre de pods et self-healing    
 2 pods seront créés (replicas: 2). Si l'un meurt, le Deployment remarque que l'état observé (1 pod) ne correspond pas à l'état souhaité (2 pods) et recrée immédiatement un nouveau pod pour revenir à 2 replicas.   
+
 2.3 - Pourquoi minio et pas une adresse IP ?    
 Parce que Kubernetes dispose d'un DNS interne de cluster qui résout les noms de service automatiquement. Dans Docker Compose, ils se voient par leur nom de service. En Kubernetes, c'est identique : les services se trouvent les uns les autres par leur nom . Le Service minio (déployé dans le même namespace) est enregistré dans le DNS interne du cluster. L'adresse IP d'un pod est éphémère (elle change à chaque recréation), alors que le nom de service est stable.     
 
@@ -82,8 +85,10 @@ spec:
       targetPort: 8000   # port du conteneur dans le pod
       protocol: TCP
 
-EXERCICE 3 : Diagnostic  
+**EXERCICE 3 : Diagnostic**    
+
 3.1 - Le pod qui ne démarre pas (ImagePullBackOff)    
+
 a. Que signifie le statut ImagePullBackOff ?  
 C'est un statut d'erreur indiquant que Kubernetes n'arrive pas à télécharger (pull) l'image Docker depuis le registre. Le système réessaie avec un délai croissant (backoff exponentiel).  
 
@@ -106,6 +111,7 @@ kubectl describe pvc data-pvc
 Affiche les événements du PVC, y compris le message du provisioner expliquant pourquoi la demande n'est pas satisfaite.
 
 3.3 - Le port-forward qui échoue  
+
 a. Pourquoi cette erreur ?  
 Le port-forward nécessite un pod en cours d'exécution (Running). Le pod cible du Service minio est en statut Pending, donc aucun endpoint actif n'est disponible pour le forwarding.  
 
@@ -120,7 +126,8 @@ Vérifier que le Service a des endpoints actifs (kubectl get endpoints minio)
 Ensuite seulement lancer le kubectl port-forward  
 
 
-EXERCICE 4 : De Docker Compose à Kubernetes  
+**EXERCICE 4 : De Docker Compose à Kubernetes**  
+
 4.1 — Nombre de manifestes nécessaires  
 3 manifestes distincts sont nécessaires pour reproduire la même fonctionnalité :  
 | Manifeste               | Objet Kubernetes      | Rôle                                                                 |
@@ -134,7 +141,7 @@ Le TP confirme cette structure : « Nous allons déployer MinIO avec 3 manifeste
 4.2 - Différence conceptuelle : volume Docker nommé vs PersistentVolumeClaim    
 Un volume Docker nommé (minio-data:/data) est géré entièrement par Docker : création automatique, stockage sur l'hôte, pas de contrôle sur l'emplacement physique. Un PersistentVolumeClaim est une demande déclarative : le pod demande « 2 Go de stockage RWO » et Kubernetes trouve un PersistentVolume existant ou en provisionne un nouveau via un StorageClass. Le PVC découple la demande de l'offre : le développeur demande, l'administrateur fournit. C'est plus structuré, plus portable entre clusters, et permet des politiques de stockage (replication, backup, types de disque).     
 
-4.3 — Différence d'accès : localhost vs port-forward     
+4.3 - Différence d'accès : localhost vs port-forward     
 Pourquoi la différence ? Avec Docker Compose, le conteneur partage le réseau de l'hôte via le port mapping direct (ports: - "9001:9001"). Avec Kubernetes et Kind, le cluster est isolé dans des conteneurs Docker. Le NodePort est exposé sur le nœud Kubernetes (conteneur interne), pas sur la machine hôte. Kind n'expose pas automatiquement les NodePorts vers l'hôte.
 Pour accéder directement comme avec Compose, il faudrait :
 Utiliser un Ingress Controller avec un port mapping de l'hôte vers le conteneur Kind (complexe)
@@ -142,7 +149,7 @@ Ou configurer Kind avec un mapping de ports extra dans la configuration du clust
 Ou utiliser un LoadBalancer avec un outil comme cloud-provider-kind
 Le kubectl port-forward est la solution de développement standard : « Par défaut, le NodePort de Kind n'est pas accessible depuis l'hôte. Pour y accéder, nous utilisons le port forwarding de kubectl »   
 
-4.4 -Deux apports de Kubernetes observés concrètement  
+4.4 - Deux apports de Kubernetes observés concrètement  
 
 | Apport                 | Observation dans le TP                                                                                                                        |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -150,10 +157,8 @@ Le kubectl port-forward est la solution de développement standard : « Par déf
 | **Scaling horizontal** | `kubectl scale deployment minio --replicas=3` crée 2 pods supplémentaires instantanément, puis `--replicas=1` les supprime |
 
 
-
-
-
-EXERCICE 5 : Mini-cas d'architecture  
+**EXERCICE 5 : Mini-cas d'architecture**  
+  
 5.1 - Choix des objets Kubernetes  
 | Composant          | Objet choisi   | Justification                                                                                                                                                                                                 |
 | ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
