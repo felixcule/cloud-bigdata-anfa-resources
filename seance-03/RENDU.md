@@ -30,7 +30,7 @@ Au cours de cette séance, Kind a été installé, un cluster Kubernetes a été
 
 ## Réponses aux exercices d'application
 
-EXERCICE 1 : QCM Conceptuel  
+**EXERCICE 1 : QCM Conceptuel**  
 1.1 B   
 Kubernetes orchestre des conteneurs sur un cluster de machines, en s'appuyant sur un container runtime (containerd, Docker, CRI-O).  
 
