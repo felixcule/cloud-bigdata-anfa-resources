@@ -31,14 +31,14 @@ PySpark en mode local est adapté au développement, tandis qu'un cluster Spark 
 
 ## Réflexion : local vs cluster  
 
-<Vos observations subjectives : durée perçue, expérience, dans quel cas vous utiliseriez l'un ou l'autre.>  
+ 
 
 ## Bonus Spark sur Kubernetes  
 
 Non 
 
 ## Réponses aux exercices d'application  
-<À compléter d'après les énoncés fournis avec l'assignment.>
+
 
 ## Difficultés rencontrées  
 Aucune
