@@ -1,18 +1,14 @@
 # Rendu : Séance 6
 
-**Nom et prénom :** Denis AKPAGNONITE
-**Identifiant GitHub :** <votre-username>
-**Date de soumission :** <JJ/MM/AAAA>
+**Nom et prénom :** YEYE Koffi Gagnon    
+**Identifiant GitHub :** felixcule    
+**Date de soumission :** 03/07/2026  
 
-## Résumé de la séance
+## Résumé de la séance  
 
-Airflow déployé via Docker Compose aux côtés de MinIO et Spark. Un premier DAG
-simple (`hello_anfa`) a servi à comprendre la mécanique, puis un DAG métier
-(`anfa_pipeline_quotidien`) orchestre le pipeline de la séance 5 :
-génération → analyse Spark → vérification → notification. Les retries et la
-propagation d'échec ont été observés via un bug volontaire.
+Apache Airflow est un orchestrateur open-source qui permet de définir, planifier et surveiller des pipelines de données en Python, selon la philosophie « Pipelines as Code ». Contrairement à cron, il gère les dépendances entre tâches, les retries automatiques, les alertes, la visualisation graphique et le rejeu de périodes passées (backfill). Son architecture repose sur cinq composants : le Webserver (interface), le Scheduler (planificateur), l'Executor (lanceur de tâches), la Metadata DB (PostgreSQL) et les DAGs (fichiers Python décrivant les workflows). Les trois patterns essentiels à maîtriser sont l'idempotence (rejouer sans effet de bord), le backfill et la gestion native des erreurs, rendant Airflow le standard de facto pour l'orchestration data, déployable partout : local, Kubernetes ou cloud managé (AWS MWAA, GCP Cloud Composer, Astronomer).  
 
-## Étapes principales
+## Étapes principales  
 
 1. Déploiement de la stack (Airflow + PostgreSQL + MinIO + Spark) via Docker Compose.
 2. Premier DAG `hello_anfa` à 2 tâches : initiation à la mécanique Airflow.
@@ -38,9 +34,13 @@ propagation d'échec ont été observés via un bug volontaire.
 
 ## Réflexion personnelle
 
-<3-5 lignes : qu'apporte Airflow par rapport à un cron simple ?
-Dans quel cas l'utiliser sur un vrai projet ?>
+
+### Qu'apporte Airflow par rapport à un cron simple ?
+Airflow gère les dépendances, retries, alertes, backfill et visualisation graphique alors que cron ignore tout celà.
+
+### Dans quel cas l'utiliser sur un vrai projet ?  
+ On peut l'utiliser dès qu'un projet data dépasse une tâche unique : ETL multi-étapes, traitements Spark, ou synchronisation d'événements externes.
 
 ## Difficultés rencontrées
 
-<Aucune | Décrivez brièvement.>
+Aucune

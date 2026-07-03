@@ -47,7 +47,11 @@ def analyser_heures_pointe():
     if code != 0:
         raise RuntimeError(f"[ERREUR] spark-submit a échoué (exit {code})")
 
-
+"""
+def verifier_resultats():
+    #Modifiée pour démonstration : force une erreur.
+    raise ValueError("Erreur volontaire pour démontrer le retry d'Airflow")
+"""
 def verifier_resultats():
     """Tâche 3 : vérifie que les Parquet sont bien dans MinIO. Échoue si vide."""
     s3 = boto3.client(
