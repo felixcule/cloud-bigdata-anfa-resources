@@ -30,6 +30,7 @@ def verifier_liste_fichiers(objets: list) -> dict:
 
     nb_fichiers = len(objets)
     taille_totale_octets = sum(o["Size"] for o in objets)
+    
     """
     return {
         "nb_fichiers": nb_fichiers,
