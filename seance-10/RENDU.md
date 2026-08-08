@@ -1,8 +1,8 @@
 # Rendu — Séance 10
 
-**Nom et prénom :** <YEYE Koffi Gagnon>
-**Identifiant GitHub :** <felixcule>
-**Date de soumission :** <08/08/2026>
+**Nom et prénom :** YEYE Koffi Gagnon
+**Identifiant GitHub :** felixcule
+**Date de soumission :** 08/08/2026
 
 ## Résumé de la séance
 
