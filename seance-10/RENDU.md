@@ -1,14 +1,14 @@
 # Rendu — Séance 10
 
-**Nom et prénom :** YEYE Koffi Gagnon 
-**Identifiant GitHub :** felixcule 
-**Date de soumission :** 08/08/2026 
+**Nom et prénom :** YEYE Koffi Gagnon   
+**Identifiant GitHub :** felixcule    
+**Date de soumission :** 08/08/2026   
 
-## Résumé de la séance
+## Résumé de la séance 
 
 La séance 10 a permis de déployer un serveur MLflow Tracking via Docker, puis d'entraîner et tracer trois versions d'un modèle de prédiction d'affluence avec des hyperparamètres différents. Ces expérimentations ont été comparées dans l'interface MLflow afin d'identifier le meilleur run (vaunted-slug-691) au regard du R², puis ce modèle a été enregistré dans le Model Registry sous le nom « anfa-prediction-affluence » et promu au statut Production. En parallèle, le cours magistral a couvert le cycle de vie MLOps, la dérive de données (data drift) et la gouvernance des données, ce qui a été mis en pratique par la rédaction d'une fiche de conformité non technique pour un jeu de données sensible de l'application mobile Anfa, en s'appuyant sur la loi togolaise et les principes de souveraineté des données.
 
-## Étapes principales
+## Étapes principales 
 
 1. Déploiement d'un serveur MLflow Tracking (SQLite + stockage local).
 2. Génération d'un jeu de données d'affluence Anfa et entraînement de 3 variantes
